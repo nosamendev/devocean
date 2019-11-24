@@ -1,0 +1,32 @@
+.item-details .item-info .item-nearby-places {
+	width: 52.2%;
+	background-color: #fff;
+	padding: 26px;
+}
+
+.item-details .item-info .item-nearby-places table {
+	margin-top: 33px;	
+}
+
+.item-details .item-info .item-nearby-places table tr {
+	background-color: #f8f8fa;
+}
+
+.item-details .item-info .item-nearby-places table td {
+	border-bottom: 5px solid #fff;
+}
+
+.item-details .item-info .item-nearby-places table tr:hover{
+    background-color: #f4f4f6;
+}
+
+.item-details .item-info .item-nearby-places table a{
+    text-decoration: none;
+    color: inherit;
+    padding: 16px 15px;
+    display: block;
+}
+
+.item-details .item-info .item-nearby-places table a:hover {
+    text-decoration: none;
+}

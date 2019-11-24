@@ -1,0 +1,10 @@
+.item-list table a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    padding: 18px 30px 18px 30px;
+}
+
+.item-list table a:hover {
+    text-decoration: none;
+}
