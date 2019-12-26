@@ -19,10 +19,10 @@ const Item = (props) => {
 }
 
 Item.propTypes = {
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    address: PropTypes. object.isRequired
+    id: PropTypes.number,
+    name: PropTypes.string,
+    description: PropTypes.string,
+    address: PropTypes. object
 }
 
 export default withRouter(Item);

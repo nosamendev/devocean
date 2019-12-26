@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -7,13 +7,13 @@ import './ItemDetails.css';
 import loader from '../../images/loader.svg';
 
 const ItemDetails = (props) => {
-   
-    useEffect(() => {
-        const itemImage = document.querySelector('.item .item-image');        
-        if (itemImage) {
-            itemImage.style.backgroundImage = `url(${image}), url(${loader})`;   
+
+    const dispalyBackgroundImage = useCallback(node => {
+        if (node) {
+            node.style.backgroundImage = `url(${image}), url(${loader})`;
         }
-    });
+      }, []);
+
 
      if (props.items.length === 0) {
         return <Redirect to="/" /> 
@@ -24,21 +24,19 @@ const ItemDetails = (props) => {
     const address = props.items[index].address;
     const phone = props.items[index].phone;
     const email = props.items[index].email;
-    const image = props.items[index].image;
+    const image = props.items[index].image; 
 
-    let nearbyPlaces;
-    const displayNearbyPlaces = () => {
-        nearbyPlaces = props.items.filter((item) => {
-            return (item.address.country === address.country) && !(item.id == id)
-        });
-    }
+    let nearbyPlaces = [];
+    nearbyPlaces = props.items.filter((item) => {
+        return (item.address.country === address.country) && !(item.id == id)
+    });
 
     return (
         <React.Fragment>
-            {displayNearbyPlaces()}
+            
             <section className="item-details"> 
                 <div className="item">
-                    <div className="item-image"></div>
+                    <div ref={dispalyBackgroundImage} className="item-image"></div>
                     <div className="item-info">
                         <div className="item-address">
                             <h2>Address</h2>
@@ -61,7 +59,7 @@ const ItemDetails = (props) => {
                         </div>
                     </div>
                 </div>
-            </section>            
+            </section>        
         </React.Fragment>
     );
 }
